@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" style="height:100vh;">
 <head runat="server">
@@ -35,52 +33,31 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Export PDF</a>
                   </li>
+
+
+                  <li class="nav-item tool-first tool">
+                    <a class="nav-link" href="#">nastroj</a>
+                  </li>
+
+
                 </ul>
               </div>
             </nav>
         </div>
-
-
-
-         <div class="row">
-            <div class="col-md-2">
-
-            </div>
-            <div class="col-md-10 toolbar">
-                <div class="tool">
-                    dfdfd
-                </div>
-                <div class="tool">
-                    dfdfd
-                </div>
-                 <div class="tool">
-                    dfdfd
-                </div>
-                <div class="tool">
-                    dfdfd
-                </div>
-                <div class="tool">
-                    dfdsfd
-                </div>
-                <div class="tool">
-                    dfdfd
-                </div>
-            </div>
-        </div>
-
-
-
         <div class="row row-main">
             <div class="col-md-2 col-main" style="background-color:paleturquoise;">
-                Verze
                 <div class="row">
-                    <div class="verze">
-                        verze A
+                    <div class="version">
+                        <div>
+                            <img src="./images/blank.png" alt="Mountains" width="100" height="100">
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="verze">
-                        verze B
+                    <div class="version">
+                        <div>
+                            <img src="./images/miniatura-dokument.png" alt="Mountains" width="100" height="100">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,7 +65,7 @@
                Main page
             </div>
             <div class="col-md-2 col-main" style="background-color:paleturquoise;">
-               Of all the minerals in the world,
+               <p align="center">Šablony</p>
             </div>
          </div>
     </div>
