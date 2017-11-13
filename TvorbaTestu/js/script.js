@@ -7,14 +7,21 @@ function addDiv() {
     iDiv.id = id;
 
     iDiv.setAttribute("contenteditable", true);
-    iDiv.addEventListener('click', selectElement(id), false);
-    document.getElementById('col-main').appendChild(iDiv);
+    iDiv.addEventListener('click', selectElement(id, event), false);
+
+    //if (id == 2) {
+        //document.getElementById('1').appendChild(iDiv);
+    //}
+    //else {
+        document.getElementById('col-main').appendChild(iDiv);
+    //}
+    
     id = id + 1;
 }
 
-function selectElement(id) {
-    var e = document.getElementById('id').event;
-    e.stopPropagation();
+function selectElement(id, event) {
+    //var e = document.getElementById('id').event;
+    //event.stopPropagation();
     console.log("clicked");
 }
 
