@@ -5,13 +5,16 @@ function addDiv() {
     var iDiv = document.createElement('div');
     iDiv.className = 'textarea';
     iDiv.id = id;
+
     iDiv.setAttribute("contenteditable", true);
-    iDiv.addEventListener('click', doSomething, false)
+    iDiv.addEventListener('click', selectElement(id), false);
     document.getElementById('col-main').appendChild(iDiv);
     id = id + 1;
 }
 
-function doSomething() {
+function selectElement(id) {
+    var e = document.getElementById('id').event;
+    e.stopPropagation();
     console.log("clicked");
 }
 
