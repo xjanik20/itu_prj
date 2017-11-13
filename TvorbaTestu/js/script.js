@@ -11,11 +11,11 @@ function addDiv() {
     iDiv.onclick = selectElement;
     //document.getElementById('1').appendChild(iDiv);
     if (focusId == -1) {
-        iDiv.className += 'question';
+        iDiv.className += ' question';
         document.getElementById('col-main').appendChild(iDiv);
     }
     else {
-        iDiv.className += 'answer';
+        iDiv.className += ' answer';
         document.getElementById(focusId).appendChild(iDiv);
     }
     
@@ -27,11 +27,15 @@ function selectElement(e) {
 
     console.log(e.type);
 
-    if (e.target.className == 'textarea') {
+    var className = e.target.className;
+    var pattTextArea = new RegExp("textarea");
+    var pattToolImage = new RegExp("tool-image");
+
+    if (pattTextArea.test(className)) {
         focusId = e.target.id;
     }
     else {
-        if (e.target.className != 'tool-image') {
+        if (pattToolImage.test(className)) {
             focusId = -1;
         }
     }
