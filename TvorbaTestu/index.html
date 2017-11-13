@@ -24,6 +24,8 @@
     <!-- include summernote css/js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
 
+    <script src="./js/script.js"></script>
+
     <div class="container-fluid" style="min-height: 100vh; display:flex;">
 
 
@@ -104,35 +106,6 @@
             </div>
         </div>
     </div>
-
-
-    <!--vlozeni otazky-->
-    <script>
-        function addDiv() {
-            var iDiv = document.createElement('div');
-            iDiv.id = 'textarea';
-            iDiv.setAttribute("contenteditable", true);
-            document.getElementById('col-main').appendChild(iDiv);
-        }
-    </script>
-
-    <!--nahradit TEXT-->
-    <script>
-        function replaceSelectedText(replacementText) {
-            var sel, range;
-            if (window.getSelection) {
-                sel = window.getSelection();
-                if (sel.rangeCount) {
-                    range = sel.getRangeAt(0);
-                    range.deleteContents();
-                    range.insertNode(document.createTextNode(replacementText));
-                }
-            } else if (document.selection && document.selection.createRange) {
-                range = document.selection.createRange();
-                range.text = replacementText;
-            }
-        }
-    </script>
 
 </body>
 </html>
