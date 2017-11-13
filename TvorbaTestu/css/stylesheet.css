@@ -30,10 +30,27 @@
 .tool {
     flex: 0 1 auto;
     margin-left: 10px;
-    border: 1px solid black;
-    box-shadow: -13px 0 0 -10px #808080
 }
 
 .tool-first{
-
+    box-shadow: -12px 0 0 -10px #808080
 }
+
+.tool-image{
+    width: 20px;
+    height: 20px;
+}
+
+.textarea {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    border: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 28px;
+    overflow: auto;
+    padding: 2px;
+    resize: vertical;
+    width: auto;
+}
+
