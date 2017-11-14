@@ -40,3 +40,89 @@ function replaceSelectedText(replacementText) {
         range.text = replacementText;
     }
 }
+
+// zmena toolbaru podle vybraneho prvku
+function setToolbar(selectedElementType) {
+    var elems;
+
+    switch (selectedElementType) {
+        case "textarea":
+
+            document.getElementById('bold').style.display = 'inline';
+            document.getElementById('italic').style.display = 'inline';
+            document.getElementById('underline').style.display = 'inline';
+            document.getElementById('textColor').style.display = 'inline';
+            document.getElementById('highlight').style.display = 'inline';
+
+            // question part
+            document.getElementById('addQuestion').style.display = 'none';
+            document.getElementById('addAnswerQuestion').style.display = 'none';
+            document.getElementById('deleteQuestion').style.display = 'none';
+            document.getElementById('addImageQuestion').style.display = 'none';
+            // answer part
+            document.getElementById('addAnswerAnswer').style.display = 'none';
+            document.getElementById('deleteAnswer').style.display = 'none';
+            document.getElementById('addImageAnswer').style.display = 'none';
+            // making text tools visible
+            // elems = document.getElementsByClassName('tool-text-invisible');
+            
+            // for (var i in elems) {
+            //     if (elems.hasOwnProperty(i)) {
+            //         elems[i].className = 'tool-text-visible';
+            //     }
+            //     alert(elems.hasOwnProperty(i));
+            // }
+
+            // // making other tools invisible
+            // var elems2 = document.getElementsByClassName('tool-question-visible');
+            // for (var i in elems) {
+            //     if (elems.hasOwnProperty(i)) {
+            //         elems[i].className = 'tool-question-invisible';
+            //     }
+            // }
+
+            // var elems3 = document.getElementsByClassName('tool-answer-visible');
+            // for (var i in elems) {
+            //     if (elems.hasOwnProperty(i)) {
+            //         elems[i].className = 'tool-answer-invisible';
+            //     }
+            // }
+            break;
+        case "question":
+            document.getElementById('addQuestion').style.display = 'inline';
+            document.getElementById('addAnswerQuestion').style.display = 'inline';
+            document.getElementById('deleteQuestion').style.display = 'inline';
+            document.getElementById('addImageQuestion').style.display = 'inline';
+
+            // textpart
+            document.getElementById('bold').style.display = 'none';
+            document.getElementById('italic').style.display = 'none';
+            document.getElementById('underline').style.display = 'none';
+            document.getElementById('textColor').style.display = 'none';
+            document.getElementById('highlight').style.display = 'none';
+            // answer part
+            document.getElementById('addAnswerAnswer').style.display = 'none';
+            document.getElementById('deleteAnswer').style.display = 'none';
+            document.getElementById('addImageAnswer').style.display = 'none';
+             break;
+        case "answer":
+            document.getElementById('addAnswerAnswer').style.display = 'inline';
+            document.getElementById('deleteAnswer').style.display = 'inline';
+            document.getElementById('addImageAnswer').style.display = 'inline';
+
+            // question part
+            document.getElementById('addQuestion').style.display = 'none';
+            document.getElementById('addAnswerQuestion').style.display = 'none';
+            document.getElementById('deleteQuestion').style.display = 'none';
+            document.getElementById('addImageQuestion').style.display = 'none';
+            // textpart
+            document.getElementById('bold').style.display = 'none';
+            document.getElementById('italic').style.display = 'none';
+            document.getElementById('underline').style.display = 'none';
+            document.getElementById('textColor').style.display = 'none';
+            document.getElementById('highlight').style.display = 'none';
+            break;
+        
+    }
+    return false;
+}

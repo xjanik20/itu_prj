@@ -55,14 +55,88 @@
 
                         <li class="nav-item tool">
                             <a class="nav-link" href="javascript:replaceSelectedText('hurray')">
-                                <img src="./images/question.png" class="tool-image" /></button>
+                                <img src="./images/question.png" class="tool-image" />
                             </a>
                         </li>
 
                         <li class="nav-item tool">
-
                             <a class="nav-link" href="javascript:replaceSelectedText('hurray')">
                                 <img src="./images/answer.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <!-- question part -->
+                        <li class="nav-item tool tool-invisible" id="addQuestion">
+                            <a class="nav-link" href="#">
+                                <img src="./images/add.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="addAnswerQuestion">
+                            <a class="nav-link" href="#">
+                                <img src="./images/answer.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="deleteQuestion">
+                            <a class="nav-link" href="#">
+                                <img src="./images/delete.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="addImageQuestion">
+                            <a class="nav-link" href="#">
+                                <img src="./images/add-image.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <!-- answer part -->
+                        <li  class="nav-item tool tool-invisible" id="addAnswerAnswer">
+                            <a class="nav-link" href="#">
+                                <img src="./images/answer.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="deleteAnswer">
+                            <a class="nav-link" href="#">
+                                <img src="./images/delete.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="addImageAnswer">
+                            <a class="nav-link" href="#">
+                                <img src="./images/add-image.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <!-- text part -->
+                        <li class="nav-item tool tool-invisible" id="bold">
+                            <a class="nav-link" href="#">
+                                <img src="./images/bold.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="italic">
+                            <a class="nav-link" href="#">
+                                <img src="./images/italic.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="underline">
+                            <a class="nav-link" href="#">
+                                <img src="./images/underline.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="textColor">
+                            <a class="nav-link" href="#">
+                                <img src="./images/text-color.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool tool-invisible" id="highlight">
+                            <a class="nav-link" href="#">
+                                <img src="./images/high-light.png" class="tool-image" />
                             </a>
                         </li>
 
@@ -97,6 +171,11 @@
             <div class="col-md-8" id="col-main" style="background-color:papayawhip;">
                 <!--<div id="summernote"></div>-->
                 <div id="textarea" contenteditable>I look like a textarea</div>
+                
+                <input type="button" onclick="setToolbar('textarea');" value="text!"> 
+                <input type="button" onclick="setToolbar('question');" value="question!"> 
+                <input type="button" onclick="setToolbar('answer');" value="answer!"> 
+
             </div>
 
 
