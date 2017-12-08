@@ -56,4 +56,42 @@
     padding: 2px;
     resize: vertical;
     width: auto;
+    margin-bottom: 10px;
+}
+
+.focused{
+    border: 1px, solid, black;
+}
+
+.question-container{
+    min-height: 50px;
+    width: auto;
+    border: 2px solid gray;
+}
+
+.answers-container{
+    min-height: 50px;
+    width: auto;
+    border: 1px dashed green;
+    
+    display: table;
+}
+
+.answer{
+    min-height: 50px;
+    min-width: 50px;
+    border: 1px solid #ff0000;
+
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    overflow: auto;
+    resize: both;
+    padding: 2px;
+    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+
+    display: table-cell;
 }
