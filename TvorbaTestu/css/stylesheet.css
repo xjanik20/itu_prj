@@ -95,7 +95,7 @@
     display: table-cell;
 }
 
-.vertical-bar:after {
+.vertical-bar:before {
     content: "|";
-    padding-left: 10px;
+    padding-right: 10px;
 }
