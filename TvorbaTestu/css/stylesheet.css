@@ -29,14 +29,13 @@
 
 .tool {
     flex: 0 1 auto;
-    margin-left: 10px;
 }
 
 .tool-first{
     box-shadow: -12px 0 0 -10px #808080
 }
 
-.tool-invisible {
+.hidden {
     display: none;
 }
 
@@ -94,4 +93,9 @@
     margin-right: 3px;
 
     display: table-cell;
+}
+
+.vertical-bar:after {
+    content: "|";
+    padding-left: 10px;
 }
