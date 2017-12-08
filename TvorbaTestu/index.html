@@ -18,6 +18,7 @@
 </head>
 <body style="height:100vh;">
 
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -49,7 +50,8 @@
 
                         <!--Panel nastroju-->
                         <li class="nav-item tool-first tool">
-                            <a class="nav-link" href="javascript:addDiv()">
+
+                            <a class="nav-link" href="javascript:addQuestion()">
                                 <img src="./images/add.png" class="tool-image" />
                             </a>
                         </li>
@@ -61,7 +63,7 @@
                         </li>
 
                         <li class="nav-item tool">
-                            <a class="nav-link" href="javascript:replaceSelectedText('hurray')">
+                            <a class="nav-link" href="javascript:addAnswer()">
                                 <img src="./images/answer.png" class="tool-image" />
                             </a>
                         </li>
@@ -171,6 +173,7 @@
             <!--Pracovni plocha-->
             <div class="col-md-8" id="col-main" style="background-color:papayawhip;">
                 <!--<div id="summernote"></div>-->
+
                 <div id="textarea" contenteditable>I look like a textarea</div>
                 
                 <input type="button" onclick="setToolbar('textarea');" value="text!"> 
