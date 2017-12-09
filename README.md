@@ -3,6 +3,7 @@ ITU Projekt 2017 Testy
 
 
 TO DO LIST:
+Za úkol si dopište jméno a po do dokenčení 'hotovo'
 1. přidání otázky
 2. přidání odpovědi
 3. odebrání otázky
@@ -16,6 +17,7 @@ TO DO LIST:
 11. tisk testu
 12. Moori implementace přetahování
 13. vysouvací panel pro rychlou editaci
+14. restyling otázek Roman
 .
 .
 .
