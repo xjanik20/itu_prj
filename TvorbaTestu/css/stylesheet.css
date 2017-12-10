@@ -39,7 +39,7 @@
     display: none;
 }
 
-.tool-image{
+.tool-image {
     width: 20px;
     height: 20px;
 }
@@ -47,39 +47,60 @@
 .textarea {
     -moz-appearance: textfield-multiline;
     -webkit-appearance: textarea;
-    border: 1px solid gray;
+    border: 1px solid grey;
     font: medium -moz-fixed;
     font: -webkit-small-control;
     height: 28px;
-    overflow: auto;
+    overflow-wrap: break-word;
     padding: 2px;
     resize: vertical;
+}
+
+.focused {
+    border: 1px solid black;
+}
+
+.question-container {
+    min-height: 80px;
+    min-width: 70%;
     width: auto;
-    margin-bottom: 10px;
+    max-width: 100%;
+    border: 1px hidden grey;
 }
 
-.focused{
-    border: 1px, solid, black;
+.question-container:hover {
+    border: 1px solid grey;
+    border-radius: 8px;
+    background-color: rgba(3,118,255,0.25);
 }
 
-.question-container{
+.question-container:focus {
+    border: 1px solid grey;
+    border-radius: 8px;
+    background-color: rgba(3,118,255,0.25);
+}
+
+.question-text {
+    max-width: 80%;
+}
+
+.question-heading {
+    padding: 15px 15px 0 15px;
+}
+
+.answers-container {
     min-height: 50px;
+    max-width: 100%;
     width: auto;
-    border: 2px solid gray;
-}
-
-.answers-container{
-    min-height: 50px;
-    width: auto;
-    border: 1px dashed green;
+    padding: 15px;
     
     display: table;
 }
 
-.answer{
+.answer {
     min-height: 50px;
     min-width: 50px;
-    border: 1px solid #ff0000;
+    max-width: 80%;
 
     -moz-appearance: textfield-multiline;
     -webkit-appearance: textarea;
@@ -93,6 +114,16 @@
     margin-right: 3px;
 
     display: table-cell;
+}
+
+.answer-number {
+    min-height: 28px;
+    min-width: 50px;
+
+    font: medium -moz-fixed;
+    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .vertical-bar:before {
