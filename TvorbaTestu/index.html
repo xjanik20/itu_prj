@@ -46,108 +46,81 @@
                             <a class="nav-link" href="#">Nový test<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-link" href="#">Tisk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Export PDF</a>
+                            <a class="nav-link" href="#">Export do PDF</a>
                         </li>
 
                         <!--Panel nastroju-->
-                        <li class="nav-item tool-first tool">
-
-                            <a class="nav-link" href="javascript:addQuestion()">
-                                <img src="./images/add.png" class="tool-image" />
-                            </a>
-                        </li>
-
-                        <li class="nav-item tool">
-                            <a class="nav-link" href="javascript:replaceSelectedText('hurray')">
-                                <img src="./images/question.png" class="tool-image" />
-                            </a>
-                        </li>
-
-                        <li class="nav-item tool">
-                            <a class="nav-link" href="javascript:addAnswer()">
-                                <img src="./images/answer.png" class="tool-image" />
-                            </a>
-                        </li>
-
                         <!-- question part -->
-                        <li class="nav-item tool tool-invisible" id="addQuestion">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool" id="addQuestion">
+                            <a class="nav-link vertical-bar" href="javascript:addQuestion()" title="Přidat otázku">
                                 <img src="./images/add.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="addAnswerQuestion">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool" id="addAnswerQuestion">
+                            <a class="nav-link" href="javascript:addAnswer()" title="Přidat odpověď">
                                 <img src="./images/answer.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="deleteQuestion">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool" id="deleteQuestion">
+                            <a class="nav-link" href="#" title="Smazat otázku">
                                 <img src="./images/delete.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="addImageQuestion">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool" id="addImageQuestion">
+                            <a class="nav-link" href="#" title="Přidat obrázek otázce">
                                 <img src="./images/add-image.png" class="tool-image" />
                             </a>
                         </li>
 
                         <!-- answer part -->
-                        <li  class="nav-item tool tool-invisible" id="addAnswerAnswer">
-                            <a class="nav-link" href="#">
-                                <img src="./images/answer.png" class="tool-image" />
-                            </a>
-                        </li>
-
-                        <li class="nav-item tool tool-invisible" id="deleteAnswer">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="deleteAnswer">
+                            <a class="nav-link vertical-bar" href="#" title="Smazat odpověď">
                                 <img src="./images/delete.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="addImageAnswer">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="addImageAnswer">
+                            <a class="nav-link" href="#" title="Přidat obrázek odpovědi">
                                 <img src="./images/add-image.png" class="tool-image" />
                             </a>
                         </li>
 
                         <!-- text part -->
-                        <li class="nav-item tool tool-invisible" id="bold">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="bold">
+                            <a class="nav-link vertical-bar" href="#" title="Tučně">
                                 <img src="./images/bold.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="italic">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="italic">
+                            <a class="nav-link" href="#" title="Kurzíva">
                                 <img src="./images/italic.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="underline">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="underline">
+                            <a class="nav-link" href="#" title="Podtržení">
                                 <img src="./images/underline.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="textColor">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="textColor">
+                            <a class="nav-link" href="#" title="Barva textu">
                                 <img src="./images/text-color.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool tool-invisible" id="highlight">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item tool hidden" id="highlight">
+                            <a class="nav-link" href="#" title="Podbarvení">
                                 <img src="./images/high-light.png" class="tool-image" />
                             </a>
                         </li>
-
-
                     </ul>
                 </div>
             </nav>
@@ -180,10 +153,22 @@
 
                 <div id="textarea" contenteditable>I look like a textarea</div>
                 
-                <input type="button" onclick="setToolbar('textarea');" value="text!"> 
-                <input type="button" onclick="setToolbar('question');" value="question!"> 
+                <input type="button" onclick="setToolbar('textarea');" value="text!">
                 <input type="button" onclick="setToolbar('answer');" value="answer!"> 
 
+                <div class="question-container">
+                    <div class="question-heading">
+                        <div class="question-text textarea" contenteditable>
+                            Takhle bude vypadat otázka!
+                        </div>
+                    </div>
+                    <div class="answers-container">
+                        <div class="answer-number">1.</div>
+                        <div class="answer textarea" contenteditable>
+                            Tohle je odpověď!
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
