@@ -1,4 +1,4 @@
-﻿.navbar {
+.navbar {
     width: 100%;
 }
 
@@ -163,4 +163,44 @@
 .answer-delete {
     display: table-cell;
     padding-left: 5px;
+}
+
+#col-verze{
+	//background-color: #B7C1F0;
+	background-color: #dbdff1;
+	min-height: 95%;
+	margin-top: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#col-sablony{
+	//background-color: #B7C1F0;
+	background-color: #dbdff1;
+	min-height: 95%;
+	margin-top: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#sablony-nadpis{
+	font-family: Adobe Garamond Pro Bold;
+	font-size: 2em;
+	user-select: none;
+}
+
+#col-main{
+	background-color: white;
+	min-height: 95%;
+	margin-top: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.miniatura {
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.min-image{
+	width: 120px;
+	height: 100px;
 }
