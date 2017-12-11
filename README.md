@@ -10,14 +10,14 @@ Za úkol si dopište jméno a po do dokenčení 'hotovo'
 4. odebrání odpovědi
 5. přidání obrázku
 6. odebrání obrázku
-7. textové pole
+7. textové pole                                       Roman hotovo
 8. nástroje pro editaci textu
 9. kategorie u otázek
 10. šablony pro různé typy otázek
 11. tisk testu
 12. Moori implementace přetahování
-13. vysouvací panel pro rychlou editaci
-14. restyling otázek Roman
+13. vysouvací panel pro rychlou editaci               Roman hotovo
+14. restyling otázek                                  Roman hotovo
 .
 .
 .
