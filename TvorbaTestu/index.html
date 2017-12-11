@@ -10,12 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/stylesheet.css" />
+    <link rel="icon" href="./images/favicon.png" type="image/png" >
 
     <!-- include summernote css/js-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet" />
 
 </head>
-<body style="height:100vh;" onclick="selectElement(event)">
+<body style="height:100vh;">
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -24,7 +26,11 @@
     <!-- include summernote css/js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
 
-    <script src="./js/script.js"></script>
+    <!--<script src="./js/script.js"></script> -->
+    <!-- js files for Roman, Michal and Jakub. It will be merged into one at the end. -->
+    <script src="./js/roman.js"></script>
+    <script src="./js/MichalAddDivs.js"></script>
+    <script src="./js/jakub.js"></script>
 
     <div class="container-fluid" style="min-height: 100vh; display:flex;">
 
@@ -40,33 +46,81 @@
                             <a class="nav-link" href="#">Nový test<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-link" href="#">Tisk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Export PDF</a>
+                            <a class="nav-link" href="#">Export do PDF</a>
                         </li>
 
                         <!--Panel nastroju-->
-                        <li class="nav-item tool-first tool">
-                            <a class="nav-link" href="javascript:addQuestion()">
+                        <!-- question part -->
+                        <li class="nav-item tool" id="addQuestion">
+                            <a class="nav-link vertical-bar" href="javascript:addQuestion()" title="Přidat otázku">
                                 <img src="./images/add.png" class="tool-image" />
                             </a>
                         </li>
 
-                        <li class="nav-item tool">
-                            <a class="nav-link" href="javascript:replaceSelectedText('hurray')">
-                                <img src="./images/question.png" class="tool-image" /></button>
-                            </a>
-                        </li>
-
-                        <li class="nav-item tool">
-
-                            <a class="nav-link" href="javascript:addAnswer()">
+                        <li class="nav-item tool" id="addAnswerQuestion">
+                            <a class="nav-link" href="javascript:addAnswer()" title="Přidat odpověď">
                                 <img src="./images/answer.png" class="tool-image" />
                             </a>
                         </li>
 
+                        <li class="nav-item tool" id="deleteQuestion">
+                            <a class="nav-link" href="#" title="Smazat otázku">
+                                <img src="./images/delete.png" class="tool-image" />
+                            </a>
+                        </li>
 
+                        <li class="nav-item tool" id="addImageQuestion">
+                            <a class="nav-link" href="#" title="Přidat obrázek otázce">
+                                <img src="./images/add-image.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <!-- answer part -->
+                        <li class="nav-item tool hidden" id="deleteAnswer">
+                            <a class="nav-link vertical-bar" href="#" title="Smazat odpověď">
+                                <img src="./images/delete.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool hidden" id="addImageAnswer">
+                            <a class="nav-link" href="#" title="Přidat obrázek odpovědi">
+                                <img src="./images/add-image.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <!-- text part -->
+                        <li class="nav-item tool hidden" id="bold">
+                            <a class="nav-link vertical-bar" href="#" title="Tučně">
+                                <img src="./images/bold.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool hidden" id="italic">
+                            <a class="nav-link" href="#" title="Kurzíva">
+                                <img src="./images/italic.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool hidden" id="underline">
+                            <a class="nav-link" href="#" title="Podtržení">
+                                <img src="./images/underline.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool hidden" id="textColor">
+                            <a class="nav-link" href="#" title="Barva textu">
+                                <img src="./images/text-color.png" class="tool-image" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item tool hidden" id="highlight">
+                            <a class="nav-link" href="#" title="Podbarvení">
+                                <img src="./images/high-light.png" class="tool-image" />
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -76,33 +130,84 @@
 
         <div class="row row-main">
             <!--Vyber verzi-->
-            <div class="col-md-2" style="background-color:paleturquoise;">
-                <div class="row">
-                    <div class="version">
-                        <div>
-                            <img src="./images/blank.png" width="100" height="100">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="version">
-                        <div>
-                            <img src="./images/miniatura-dokument.png" alt="Mountains" width="100" height="100">
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-2" style="background-color: rgb(245,245,245);">
+				<div id="col-verze">
+				<p align="center" id="sablony-nadpis">Verze</p>
+					<div class="row">
+						<div class="miniatura">
+							<div>
+								<img class="min-image" "src="./images/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="miniatura">
+							<div>
+								<img class="min-image" src="./images/miniatura-dokument.png" alt="Mountains">
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
 
             <!--Pracovni plocha-->
-            <div class="col-md-8" id="col-main" style="background-color:papayawhip;">
+            <div class="col-md-8" style="background-color: rgb(245,245,245);">
                 <!--<div id="summernote"></div>-->
-                <!--<div id="textarea" contenteditable>I look like a textarea</div>-->
+				<div id="col-main">
+
+					<div id="textarea" contenteditable>I look like a textarea</div>
+					
+					<input type="button" onclick="setToolbar('textarea');" value="text!">
+					<input type="button" onclick="setToolbar('answer');" value="answer!"> 
+
+					<div class="question-container">
+						<div class="question-heading">
+							<div class="question-text textarea" contenteditable="true">
+								Takhle bude vypadat otázka!
+							</div>
+						</div>
+						<div class="answers-container">
+							<div class="answer-number">1.</div>
+							<div class="answer textarea" contenteditable="true">
+								Tohle je odpověď!
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
 
 
             <!--Sablony-->
-            <div class="col-md-2" style="background-color:paleturquoise;">
-                <p align="center">Šablony</p>
+            <div class="col-md-2"  style="background-color: rgb(245,245,245);">
+				<div class="col-md-12" id="col-sablony">
+					
+					<p align="center" id="sablony-nadpis">Šablony</p>
+					
+					<div class="row">
+						<div class="miniatura">
+							<div>
+								<img class="min-image" src="./images/sablona-odrazky.png">
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="miniatura">
+							<div>
+								<img class="min-image" src="./images/sablona-obr.png">
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="miniatura">
+							<div>
+								<img class="min-image" src="./images/sablona-moznosti.png">
+							</div>
+						</div>
+					</div>
+					
+				</div>
             </div>
         </div>
     </div>
