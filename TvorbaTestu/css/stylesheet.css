@@ -7,7 +7,7 @@
     flex-flow: column;
 }
 
-.miniatura {
+.version {
     border: 2px solid black;
     margin: auto;
     margin-top: 20px;
@@ -52,7 +52,7 @@
     font: -webkit-small-control;
     height: 28px;
     overflow-wrap: break-word;
-    padding: 2px;
+    padding: 4px;
     resize: vertical;
     overflow: auto;
 }
@@ -61,11 +61,15 @@
     border: 1px solid black;
 }
 
+.question-pop-up {
+    min-height: 24px;
+    min-width: 70%;
+    display: none;
+}
+
 .question-container {
     min-height: 80px;
     min-width: 70%;
-    width: auto;
-    max-width: 100%;
     border: 1px hidden grey;
 }
 
@@ -73,6 +77,10 @@
     border: 1px solid grey;
     border-radius: 8px;
     background-color: rgba(3,118,255,0.25);
+}
+
+.question-container:hover .question-pop-up {
+    display: block;
 }
 
 .question-container:focus {
@@ -90,6 +98,8 @@
     padding: 15px 15px 0 15px;
 }
 
+
+
 .answers-container {
     min-height: 50px;
     max-width: 100%;
@@ -104,7 +114,6 @@
     min-width: 50px;
     max-width: 80%;
 
-    padding: 2px;
     margin-bottom: 10px;
     margin-left: 3px;
     margin-right: 3px;
@@ -114,11 +123,15 @@
 
 .answer-number {
     min-width: 50px;
-
+    display: table-cell;
     font: medium -moz-fixed;
     margin-bottom: 10px;
     margin-left: 3px;
     margin-right: 3px;
+}
+
+.answer-row {
+    margin-bottom: 10px;
 }
 
 .vertical-bar:before {
@@ -130,16 +143,42 @@
     border: 2px solid #8897DE;
 }
 
+.inline-list {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+.inline-list-item {
+    float: left;
+    background-color: silver;
+}
+
+.list-link {
+    padding: 5px;
+}
+
+.answer-delete {
+    display: table-cell;
+    padding-left: 5px;
+}
+
 #col-verze{
-	background-color: white;
+	//background-color: #B7C1F0;
+	background-color: #dbdff1;
 	min-height: 95%;
 	margin-top: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #col-sablony{
-	background-color: white;
+	//background-color: #B7C1F0;
+	background-color: #dbdff1;
 	min-height: 95%;
 	margin-top: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #sablony-nadpis{
@@ -152,12 +191,16 @@
 	background-color: white;
 	min-height: 95%;
 	margin-top: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.miniatura {
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .min-image{
 	width: 120px;
 	height: 100px;
 }
-
-
-
