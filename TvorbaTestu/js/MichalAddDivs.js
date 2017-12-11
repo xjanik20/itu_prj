@@ -1,6 +1,6 @@
 var id = 0;
-var focusId = -1;
-
+var focusElement = -1;
+/*
 //vlozeni otazky
 function addQuestion() {
     //vytvoreni divu pro celou otazku
@@ -46,11 +46,17 @@ function addQuestion() {
     else {
         iDiv.className += ' answer';
         document.getElementById(focusId).appendChild(iDiv);
-    }*/
+    }}*/
 
-
+function addQuestion() {
+    var question = muuriWrapper.newQuestion();
+    var text1 = document.createTextNode("Otázka "+muuriWrapper.idSequence+" podotázka 1");
+    var text2 = document.createTextNode("Otázka "+muuriWrapper.idSequence+" podotázka 2");
+    muuriWrapper.addElementTo(text1,muuriWrapper.questionMuuriArray[muuriWrapper.idSequence-1]);
+    muuriWrapper.addElementTo(text2,muuriWrapper.questionMuuriArray[muuriWrapper.idSequence-1]);
 }
 
+/*
 function addAnswer() {
 
     console.log(focusId);
@@ -104,20 +110,18 @@ function addAnswer() {
 
 
 }
-
+*/
 function addImage() {
     var iDiv = document.createElement('div');
     var iImage = document.createElement('img');
-    var focus = documument.getElementById(focusId);
-    
+
     iDiv.classList.add('testImgDiv');
-    iDiv.classList.add('questionElement');
-    iDiv.id = "testImage_" + id;
+    iDiv.id = "testImage-" + id;
     id++;
     
     iImage.src('images\question.png');
 
-    focus.appendChild(iDiv);
+    muuriWrapper.addElementTo()
     iDiv.appendChild(iImage);
 }
 
