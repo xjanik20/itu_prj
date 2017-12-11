@@ -56,11 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function Init(){
         addQuestionButton.addEventListener('click',newQuestion)
     }
-
+    /*
     function createInjectMuuri(element,muuriOptions){
         var oldchildren = [];
         for (var i = 0; i < element.childNodes.length;i++){
-            oldchildren.push(element.removeChild(element.firstChild))
+            var child = element.removeChild(element.firstChild);
+            oldchildren.push(child);
         }
         var muuri = new Muuri(element,muuriOptions)
         for (var i = 0; i < oldchildren.length;i++){
@@ -68,11 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return muuri;
     }
+    */
 
     function clearElement(element){
         var oldchildren = [];
-        for (var i = 0; i < element.childNodes.length;i++){
-            oldchildren.push(element.removeChild(element.firstChild))
+        while (element.hasChildNodes()){
+            var child = element.removeChild(element.firstChild);
+            if(child.nodeType === Node.ELEMENT_NODE)
+                oldchildren.push(child);
         }
         return oldchildren;
     }
