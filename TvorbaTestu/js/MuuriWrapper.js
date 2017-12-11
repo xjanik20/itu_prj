@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var addQuestionButton = document.getElementById("addQuestion");
 
 
-    var templateMuuri = new Muuri(
-        document.getElementById("template-grid"),
+    var templateMuuri = createInjectMuuri(
+        document.getElementById("templateArea"),
         {
             dragSort:function () {
                 return [templateMuuri,testMuuri];
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     );
 
-    var versionMuuri = new Muuri(
-        document.getElementById("version-grid"),
+    var versionMuuri = createInjectMuuri(
+        document.getElementById("versionArea"),
         {
             dragSort: function (item) {
                return [versionMuuri]
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
             dragEnabled: true
         }
     );
-    var testMuuri = new Muuri(
-        document.getElementById("test-grid"),
+    var testMuuri = createInjectMuuri(
+        document.getElementById("questionArea"),
         {
             dragSort: function (item) {
                 return [testMuuri,templateMuuri]
@@ -42,6 +42,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function Init(){
         addQuestionButton.addEventListener('click',newQuestion)
+    }
+
+    function createInjectMuuri(element,muuriOptions){
+        var oldchildren = [];
+        for (var i = 0; i < element.childNodes.length;i++){
+            oldchildren.push(element.removeChild(element.childNodes[0]))
+        }
+        var muuri = new Muuri(element,muuriOptions)
+        for (var i = 0; i < oldchildren.length;i++){
+            addElementTo(oldchildren[i],muuri);
+        }
+        return muuri;
     }
 
     function newQuestion() {
@@ -92,36 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
         //adding to grid
         itemContentDiv.appendChild(element);
         grid.add(itemDiv);
-    }
-
-    function createTemplateMarkup() {
-        var gridDiv = document.createElement("div");
-        gridDiv.classList.add('template-grid');
-        var itemDiv = gridDiv.createElement("div");
-        itemDiv.classList.add('item');
-        var itemContentDiv = itemDiv.createElement("div");
-        itemContentDiv.classList.add('item-content');
-        return new MuuriPair(gridDiv, itemContentDiv);
-    }
-
-    function createPartMarkup() {
-        var gridDiv = document.createElement("div");
-        gridDiv.classList.add('part-grid');
-        var itemDiv = gridDiv.createElement("div");
-        itemDiv.classList.add('item');
-        var itemContentDiv = itemDiv.createElement("div");
-        itemContentDiv.classList.add('item-content');
-        return new MuuriPair(gridDiv, itemContentDiv);
-    }
-
-    function createTestMarkup() {
-        var gridDiv = document.createElement("div");
-        gridDiv.classList.add('test-grid');
-        var itemDiv = gridDiv.createElement("div");
-        itemDiv.classList.add('item');
-        var itemContentDiv = itemDiv.createElement("div");
-        itemContentDiv.classList.add('item-content');
-        return new MuuriPair(gridDiv, itemContentDiv);
     }
     Init();
     });

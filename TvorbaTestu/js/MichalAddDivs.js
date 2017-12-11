@@ -48,13 +48,13 @@ function addQuestion() {
         document.getElementById(focusId).appendChild(iDiv);
     }}*/
 
-function addQuestion() {
+/*function addQuestion() {
     var question = muuriWrapper.newQuestion();
     var text1 = document.createTextNode("Otázka "+muuriWrapper.idSequence+" podotázka 1");
     var text2 = document.createTextNode("Otázka "+muuriWrapper.idSequence+" podotázka 2");
     muuriWrapper.addElementTo(text1,muuriWrapper.questionMuuriArray[muuriWrapper.idSequence-1]);
     muuriWrapper.addElementTo(text2,muuriWrapper.questionMuuriArray[muuriWrapper.idSequence-1]);
-}
+*/}
 
 /*
 function addAnswer() {
