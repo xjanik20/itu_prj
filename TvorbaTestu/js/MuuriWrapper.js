@@ -10,36 +10,49 @@ document.addEventListener('DOMContentLoaded', function () {
     var idSequence = 0;
     var addQuestionButton = document.getElementById("addQuestion");
 
+    var templateElement = document.getElementById("templateArea")
+    var versionElement = document.getElementById("versionArea");
+    var testElement = document.getElementById("questionArea");
 
-    var templateMuuri = createInjectMuuri(
-        document.getElementById("templateArea"),
+    var children = clearElement(templateElement);
+    var templateMuuri = new Muuri(
+        templateElement,
         {
-            dragSort:function () {
-                return [templateMuuri,testMuuri];
-            },
+            dragSort: templateSort,
             dragEnabled: true
         }
     );
+    refillElement(children,templateMuuri);
 
-    var versionMuuri = createInjectMuuri(
-        document.getElementById("versionArea"),
+    children = clearElement(versionElement);
+    var versionMuuri = new Muuri(
+        versionElement,
         {
-            dragSort: function (item) {
-               return [versionMuuri]
-            },
+            dragSort:versionSort,
             dragEnabled: true
         }
     );
-    var testMuuri = createInjectMuuri(
-        document.getElementById("questionArea"),
+    refillElement(children,versionMuuri);
+
+    children = clearElement(testElement);
+    var testMuuri = new Muuri(
+        testElement,
         {
-            dragSort: function (item) {
-                return [testMuuri,templateMuuri]
-            },
+            dragSort: testSort,
             dragEnabled: true
         }
     );
+    refillElement(children,testMuuri);
 
+    function templateSort(item){
+        return [templateMuuri,testMuuri]
+    }
+    function versionSort(item){
+        return [versionMuuri]
+    }
+    function testSort(item){
+        return [templateMuuri,testMuuri]
+    }
     function Init(){
         addQuestionButton.addEventListener('click',newQuestion)
     }
@@ -47,13 +60,26 @@ document.addEventListener('DOMContentLoaded', function () {
     function createInjectMuuri(element,muuriOptions){
         var oldchildren = [];
         for (var i = 0; i < element.childNodes.length;i++){
-            oldchildren.push(element.removeChild(element.childNodes[0]))
+            oldchildren.push(element.removeChild(element.firstChild))
         }
         var muuri = new Muuri(element,muuriOptions)
         for (var i = 0; i < oldchildren.length;i++){
             addElementTo(oldchildren[i],muuri);
         }
         return muuri;
+    }
+
+    function clearElement(element){
+        var oldchildren = [];
+        for (var i = 0; i < element.childNodes.length;i++){
+            oldchildren.push(element.removeChild(element.firstChild))
+        }
+        return oldchildren;
+    }
+    function refillElement(oldchildren,muuri){
+        for (var i = 0; i < oldchildren.length;i++){
+            addElementTo(oldchildren[i],muuri);
+        }
     }
 
     function newQuestion() {

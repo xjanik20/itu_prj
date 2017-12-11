@@ -54,7 +54,7 @@ function addQuestion() {
     var text2 = document.createTextNode("Otázka "+muuriWrapper.idSequence+" podotázka 2");
     muuriWrapper.addElementTo(text1,muuriWrapper.questionMuuriArray[muuriWrapper.idSequence-1]);
     muuriWrapper.addElementTo(text2,muuriWrapper.questionMuuriArray[muuriWrapper.idSequence-1]);
-*/}
+}*/
 
 /*
 function addAnswer() {
