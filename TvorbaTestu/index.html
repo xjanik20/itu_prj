@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" style="height:100vh;">
 <head>
@@ -135,101 +135,133 @@
 
         <div class="row row-main">
             <!--Vyber verzi-->
-            <div class="col-md-2" style="background-color:paleturquoise;">
-                <div class="filldiv" id = versionArea>
-                    <div class="row">
-                        <div class="version">
-                            <div>
-                                <img src="./images/blank.png" width="100" height="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="version">
-                            <div>
-                                <img src="./images/miniatura-dokument.png" alt="Mountains" width="100" height="100">
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="col-md-2" style="background-color: rgb(245,245,245);">
+				<div id="col-verze">
+				<p align="center" id="sablony-nadpis">Verze</p>
+					<div class="filldiv" id = versionArea>
+            <div class="row">
+              <div class="miniatura">
+                <div>
+                  <img class="min-image" src="./images/blank.png">
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="miniatura">
+                <div>
+                  <img class="min-image" src="./images/miniatura-dokument.png" alt="Mountains">
+                </div>
+              </div>
+            </div>
+          </div>
+				</div>
             </div>
 
             <!--Pracovni plocha-->
-            <div class="col-md-8 bg-light" id="col-main">
+            <div class="col-md-8 bg-light" style="background-color: rgb(245,245,245);">
                 <!--<div id="summernote"></div>-->
 
-                <div id="textarea" contenteditable>I look like a textarea</div>
-                
-                <input type="button" onclick="setToolbar('textarea');" value="text!">
-                <input type="button" onclick="setToolbar('answer');" value="answer!">
-                <div class="filldiv" id = questionArea>
-                    <div class="question-container">
-                        <div class="question-heading">
-                            <div class="question-text textarea" contenteditable="true">
-                                Takhle bude vypadat otázka!
-                            </div>
-                        </div>
-                        <div class="answers-container">
-                            <div class="answer-row">
-                                <div class="answer-number">1.</div>
-                                <div class="answer textarea" contenteditable="true">
-                                    Tohle je odpověď!
-                                </div>
-                                <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
-                            </div>
-                            <div class="answer-row">
-                                <div class="answer-number">1.</div>
-                                <div class="answer textarea" contenteditable="true">
-                                    Tohle je odpověď!
-                                </div>
-                                <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
-                            </div>
-                            <div class="answer-row">
-                                <div class="answer-number">1.</div>
-                                <div class="answer textarea" contenteditable="true">
-                                    Tohle je odpověď!
-                                </div>
-                                <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
-                            </div>
-                        </div>
-                        <div class="question-pop-up">
-                            <ul class="inline-list">
-                                <li class="inline-list-item" id="addQuestionDetail">
-                                    <a class="list-link" href="javascript:addQuestion()" title="Přidat otázku">
-                                        <img src="./images/add.png" class="tool-image" />
-                                    </a>
-                                </li>
+				<div id="col-main">
+					<div id="textarea" contenteditable>I look like a textarea</div>
+					
+					<input type="button" onclick="setToolbar('textarea');" value="text!">
+					<input type="button" onclick="setToolbar('answer');" value="answer!"> 
+          <div class="filldiv" id = questionArea>
+            <div class="question-container">
+              <div class="question-heading">
+                <div class="question-text textarea" contenteditable="true">
+                  Takhle bude vypadat otázka!
+                </div>
+              </div>
+              <div class="answers-container">
+                <div class="answer-row">
+                  <div class="answer-number">1.</div>
+                  <div class="answer textarea" contenteditable="true">
+                    Tohle je odpověď!
+                  </div>
+                  <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
+                </div>
+                <div class="answer-row">
+                  <div class="answer-number">1.</div>
+                  <div class="answer textarea" contenteditable="true">
+                    Tohle je odpověď!
+                  </div>
+                  <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
+                </div>
+                <div class="answer-row">
+                  <div class="answer-number">1.</div>
+                  <div class="answer textarea" contenteditable="true">
+                    Tohle je odpověď!
+                  </div>
+                  <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
+                </div>
+              </div>
+              <div class="question-pop-up">
+                <ul class="inline-list">
+                  <li class="inline-list-item" id="addQuestionDetail">
+                    <a class="list-link" href="javascript:addQuestion()" title="Přidat otázku">
+                      <img src="./images/add.png" class="tool-image" />
+                    </a>
+                  </li>
 
-                                <li class="inline-list-item" id="addAnswerQuestionDetail">
-                                    <a class="list-link" href="javascript:addAnswer()" title="Přidat odpověď">
-                                        <img src="./images/answer.png" class="tool-image" />
-                                    </a>
-                                </li>
+                  <li class="inline-list-item" id="addAnswerQuestionDetail">
+                    <a class="list-link" href="javascript:addAnswer()" title="Přidat odpověď">
+                      <img src="./images/answer.png" class="tool-image" />
+                    </a>
+                  </li>
 
-                                <li class="inline-list-item" id="deleteQuestionDetail">
-                                    <a class="list-link" href="#" title="Smazat otázku">
-                                        <img src="./images/delete.png" class="tool-image" />
-                                    </a>
-                                </li>
+                  <li class="inline-list-item" id="deleteQuestionDetail">
+                    <a class="list-link" href="#" title="Smazat otázku">
+                      <img src="./images/delete.png" class="tool-image" />
+                    </a>
+                  </li>
 
-                                <li class="inline-list-item" id="addImageQuestionDetail">
-                                    <a class="list-link" href="#" title="Přidat obrázek otázce">
-                                        <img src="./images/add-image.png" class="tool-image" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>>
+                  <li class="inline-list-item" id="addImageQuestionDetail">
+                    <a class="list-link" href="#" title="Přidat obrázek otázce">
+                      <img src="./images/add-image.png" class="tool-image" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+				</div>
 
             </div>
 
 
             <!--Sablony-->
-            <div class="col-md-2" style="background-color:paleturquoise;">
-                <div class="filldiv" id = templateArea>
-                    <p align="center">Šablony</p>
+            <div class="col-md-2"  style="background-color: rgb(245,245,245);">
+				<div class="col-md-12" id="col-sablony">
+					
+					<p align="center" id="sablony-nadpis">Šablony</p>
+					<div class="filldiv" id = templateArea>
+            <div class="row">
+              <div class="miniatura">
+                <div>
+                  <img class="min-image" src="./images/sablona-odrazky.png">
                 </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="miniatura">
+                <div>
+                  <img class="min-image" src="./images/sablona-obr.png">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="miniatura">
+                <div>
+                  <img class="min-image" src="./images/sablona-moznosti.png">
+                </div>
+              </div>
+            </div>
+          </div>					
+				</div>
             </div>
         </div>
     </div>
