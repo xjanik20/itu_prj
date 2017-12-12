@@ -1,0 +1,139 @@
+document.addEventListener('DOMContentLoaded', function () {
+
+    function MuuriPair(outer, inner) {
+        this.outerElement = outer;
+        this.contentElement = inner;
+    }
+
+    selectedElement = null;
+    var questionMuuriArray = [];
+    var idSequence = 0;
+    var addQuestionButton = document.getElementById("addQuestion");
+
+    var templateElement = document.getElementById("templateArea")
+    var versionElement = document.getElementById("versionArea");
+    var testElement = document.getElementById("questionArea");
+
+    var children = clearElement(templateElement);
+    var templateMuuri = new Muuri(
+        templateElement,
+        {
+            dragSort: templateSort,
+            dragEnabled: true
+        }
+    );
+    refillElement(children,templateMuuri);
+
+    children = clearElement(versionElement);
+    var versionMuuri = new Muuri(
+        versionElement,
+        {
+            dragSort:versionSort,
+            dragEnabled: true
+        }
+    );
+    refillElement(children,versionMuuri);
+
+    children = clearElement(testElement);
+    var testMuuri = new Muuri(
+        testElement,
+        {
+            dragSort: testSort,
+            dragEnabled: true
+        }
+    );
+    refillElement(children,testMuuri);
+
+    function templateSort(item){
+        return [templateMuuri,testMuuri]
+    }
+    function versionSort(item){
+        return [versionMuuri]
+    }
+    function testSort(item){
+        return [templateMuuri,testMuuri]
+    }
+    function Init(){
+        addQuestionButton.addEventListener('click',newQuestion)
+    }
+    /*
+    function createInjectMuuri(element,muuriOptions){
+        var oldchildren = [];
+        for (var i = 0; i < element.childNodes.length;i++){
+            var child = element.removeChild(element.firstChild);
+            oldchildren.push(child);
+        }
+        var muuri = new Muuri(element,muuriOptions)
+        for (var i = 0; i < oldchildren.length;i++){
+            addElementTo(oldchildren[i],muuri);
+        }
+        return muuri;
+    }
+    */
+
+    function clearElement(element){
+        var oldchildren = [];
+        while (element.hasChildNodes()){
+            var child = element.removeChild(element.firstChild);
+            if(child.nodeType === Node.ELEMENT_NODE)
+                oldchildren.push(child);
+        }
+        return oldchildren;
+    }
+    function refillElement(oldchildren,muuri){
+        for (var i = 0; i < oldchildren.length;i++){
+            addElementTo(oldchildren[i],muuri);
+        }
+    }
+
+    function newQuestion() {
+        //creating markup
+        var markup = createQuestionMarkup();
+        testMuuri.add(markup.outerElement);
+        //creating muuri
+        questionMuuriArray.push(
+            new Muuri(
+                markup.contentElement,
+                {
+                    dragEnabled: true,
+                    dragSort: function(item){
+                        return questionMuuriArray
+                    }
+                }
+            )
+        );
+        //adding new question to grif
+        idSequence++;
+        return markup;
+    }
+
+    function createQuestionMarkup() {
+        //item
+        var itemDiv = document.createElement("div");
+        itemDiv.classList.add('item');
+        //item-content
+        var itemContentDiv = document.createElement("div");
+        itemContentDiv.classList.add('item-content');
+        itemDiv.appendChild(itemContentDiv);
+        //nested grid
+        var gridDiv = document.createElement("div");
+        gridDiv.classList.add('question-grid');
+        gridDiv.id = 'question-grid-' + idSequence;
+        itemContentDiv.appendChild(gridDiv);
+        return new MuuriPair(itemDiv, gridDiv);
+    }
+
+    function addElementTo(element, grid) {
+        //item
+        var itemDiv = document.createElement("div");
+        itemDiv.classList.add('item');
+        //inner content
+        var itemContentDiv = document.createElement("div");
+        itemContentDiv.classList.add('item-content');
+        itemDiv.appendChild(itemContentDiv);
+        //adding to grid
+        itemContentDiv.appendChild(element);
+        grid.add(itemDiv);
+    }
+    Init();
+    });

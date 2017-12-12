@@ -198,6 +198,11 @@
     border: 2px solid black;
     margin: auto;
     margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.miniatura:hover {
+	box-shadow: 0 0 15px rgb(71, 71, 107);
 }
 
 .min-image{
