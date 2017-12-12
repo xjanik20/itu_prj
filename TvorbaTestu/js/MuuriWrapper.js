@@ -1,5 +1,6 @@
+var muuriWrapper = {};
 document.addEventListener('DOMContentLoaded', function () {
-
+    (function(){
     function MuuriPair(outer, inner) {
         this.outerElement = outer;
         this.contentElement = inner;
@@ -102,8 +103,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             )
         );
+        //addElementTo(createInnerQuestionMarkup(),questionMuuriArray[questionMuuriArray.length - 1]);
         //adding new question to grif
         idSequence++;
+        addElementTo(createInnerQuestionMarkup(),questionMuuriArray[questionMuuriArray.length - 1]);
         return markup;
     }
 
@@ -123,6 +126,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return new MuuriPair(itemDiv, gridDiv);
     }
 
+        function createInnerQuestionMarkup(){
+            var text = document.createTextNode("Nová otázka")
+            var div = document.createElement("div");
+            div.classList.add("question-container");
+            div.appendChild(text);
+
+            return div;
+        }
+
     function addElementTo(element, grid) {
         //item
         var itemDiv = document.createElement("div");
@@ -136,4 +148,5 @@ document.addEventListener('DOMContentLoaded', function () {
         grid.add(itemDiv);
     }
     Init();
+    }).apply(muuriWrapper);
     });
