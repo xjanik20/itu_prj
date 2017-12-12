@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
             this.contentElement = inner;
         }
 
-        selectedElement = null;
-        questionMuuriArray: var questionMuuriArray = [] ;
+        this.selectedElement = null;
+
+        var questionMuuriArray = [] ;
         var idSequence = 0;
         var addQuestionButton = document.getElementById("addQuestion");
 
@@ -95,7 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
         newQuestion : function newQuestion() {
             //creating markup
             var markup = createQuestionMarkup();
-            testMuuri.add(markup.outerElement);
+            markup.outerElement.addEventListener("click",selectEventHandler);
+            addElementTo(markup.outerElement,testMuuri);
             //creating muuri
             questionMuuriArray.push(
                 new Muuri(
@@ -111,24 +113,23 @@ document.addEventListener('DOMContentLoaded', function () {
             //addElementTo(createInnerQuestionMarkup(),questionMuuriArray[questionMuuriArray.length - 1]);
             //adding new question to grif
             idSequence++;
+            var innerMarkup = createInnerQuestionMarkup();
             addElementTo(createInnerQuestionMarkup(), questionMuuriArray[questionMuuriArray.length - 1]);
+
             return markup;
         }
 
+
         function createQuestionMarkup() {
-            //item
-            var itemDiv = document.createElement("div");
-            itemDiv.classList.add('item');
-            //item-content
-            var itemContentDiv = document.createElement("div");
-            itemContentDiv.classList.add('item-content');
-            itemDiv.appendChild(itemContentDiv);
+            //wrapping div
+            var questionDiv = document.createElement("div");
+            questionDiv.classList.add("question-container");
             //nested grid
             var gridDiv = document.createElement("div");
             gridDiv.classList.add('question-grid');
             gridDiv.id = 'question-grid-' + idSequence;
-            itemContentDiv.appendChild(gridDiv);
-            return new MuuriPair(itemDiv, gridDiv);
+            questionDiv.appendChild(gridDiv);
+            return new MuuriPair(questionDiv, gridDiv);
         }
 
         function createInnerQuestionMarkup() {
@@ -153,6 +154,18 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.add(itemDiv);
         }
 
+
+
         Init();
     }).apply(muuriWrapper);
 });
+
+function selectEventHandler(e){
+    e.stopPropagation();
+    if (muuriWrapper.selectedElement !== null){
+        muuriWrapper.selectedElement.classList.remove("selected");
+    }
+    muuriWrapper.selectedElement = e.currentTarget;
+    muuriWrapper.selectedElement.classList.add("selected");
+
+}
