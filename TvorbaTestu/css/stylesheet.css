@@ -66,17 +66,38 @@
     display: none;
 }
 
+.subQuestion-container {
+    min-height: 2em;
+    min-width: 70%;
+    border-radius: 8px;
+    border: 1px solid green;
+}
+
+.subQuestion-container:hover {
+    background-color: rgba(3,118,255,0.25);
+}
+
+.subQuestion-container.selected {
+    border: 3px dashed green;
+}
+
 .question-container {
     min-height: 80px;
     min-width: 70%;
-    border: 1px hidden grey;
+    border-radius: 8px;
+    border: 1px solid blue;
 }
 
 .question-container:hover {
-    border: 1px solid grey;
-    border-radius: 8px;
     background-color: rgba(3,118,255,0.25);
 }
+
+.question-container.selected {
+    border: 3px dashed blue;
+}
+
+
+
 
 .question-container:hover .question-pop-up {
     display: block;

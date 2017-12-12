@@ -5,6 +5,7 @@
 }
 .filldiv{
     position:relative;
+    min-height: 2em;
     width:  100%;
     height:  100%;
 }
@@ -20,4 +21,8 @@
 }
 .item.muuri-item-hidden {
     z-index: 0;
+}
+
+.question-container{
+
 }

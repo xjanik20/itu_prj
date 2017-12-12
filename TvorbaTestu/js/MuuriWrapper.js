@@ -1,4 +1,7 @@
 var muuriWrapper = {};
+var selectedElement = null;
+var selectIdToMoori = {};
+var selectIdToParentMoori = {}
 document.addEventListener('DOMContentLoaded', function () {
     (function () {
         function MuuriPair(outer, inner) {
@@ -6,13 +9,16 @@ document.addEventListener('DOMContentLoaded', function () {
             this.contentElement = inner;
         }
 
-        this.selectedElement = null;
-
         var questionMuuriArray = [] ;
         var idSequence = 0;
-        var addQuestionButton = document.getElementById("addQuestion");
+        var textareaIdSequence = 0;
 
-        var templateElement = document.getElementById("templateArea")
+        var addQuestionButton = document.getElementById("addQuestion");
+        var deleteQuestionButton = document.getElementById("deleteQuestion");
+        var deleteSubQuestionButton = document.getElementById("deleteSubQuestion");
+        var newTextAreaButton = document.getElementById("addTextArea");
+
+        var templateElement = document.getElementById("templateArea");
         var versionElement = document.getElementById("versionArea");
         var testElement = document.getElementById("questionArea");
 
@@ -40,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var testMuuri = new Muuri(
             testElement,
             {
+                dragStartPredicate: {
+                    handle: '.question-heading'
+                },
                 dragSort: testSort,
                 dragEnabled: true
             }
@@ -59,7 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function Init() {
-            addQuestionButton.addEventListener('click', newQuestion)
+            addQuestionButton.addEventListener('click', newQuestion);
+            newTextAreaButton.addEventListener('click', newTextArea);
+            deleteQuestionButton.addEventListener('click',deleteEventHandler);
+            deleteSubQuestionButton.addEventListener('click',deleteEventHandler);
         }
 
         /*
@@ -93,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        newQuestion : function newQuestion() {
+        function newQuestion() {
             //creating markup
             var markup = createQuestionMarkup();
             markup.outerElement.addEventListener("click",selectEventHandler);
@@ -108,38 +120,67 @@ document.addEventListener('DOMContentLoaded', function () {
                             return questionMuuriArray
                         }
                     }
-                )
+                ).on('dragStart', function (item) {
+                    item.getElement().style.width = item.getWidth() + 'px';
+                    item.getElement().style.height = item.getHeight() + 'px';
+                }).on('dragReleaseEnd', function (item) {
+                    item.getElement().style.width = '';
+                    item.getElement().style.height = '';
+                    questionMuuriArray.forEach(function (muuri) {
+                        muuri.refreshItems();
+                    })
+                }).on('layoutStart', function () {
+                    testMuuri.refreshItems().layout();
+                })
             );
             //addElementTo(createInnerQuestionMarkup(),questionMuuriArray[questionMuuriArray.length - 1]);
             //adding new question to grif
+
+            //var innerMarkup = createInnerQuestionMarkup();
+            //addElementTo(innerMarkup, questionMuuriArray[questionMuuriArray.length - 1]);
+            selectIdToMoori[markup.outerElement.id] = questionMuuriArray[questionMuuriArray.length - 1];
+            selectedElement = markup.outerElement;
             idSequence++;
-            var innerMarkup = createInnerQuestionMarkup();
-            addElementTo(createInnerQuestionMarkup(), questionMuuriArray[questionMuuriArray.length - 1]);
+
+            //var mrk = makeQHeading();
+
+            //markup.outerElement.appendChild(mrk);
 
             return markup;
         }
 
+        function newTextArea() {
+            var markup = makeSubQuestionTextArea();
+            markup.addEventListener("click",selectEventHandler);
+            addElementTo(markup,selectIdToMoori[selectedElement.id]);
+            selectIdToParentMoori[markup.id] = selectIdToMoori[selectedElement.id];
+        }
+
+        function deleteEventHandler(e) {
+            if (selectedElement.classList.contains("question-container")){
+                selectIdToMoori[selectedElement.id].destroy(true);
+                testMuuri.remove([selectedElement.parentNode.parentNode],{removeElements: true});
+            }
+            if (selectedElement.classList.contains("subQuestion-container")){
+                selectIdToParentMoori[selectedElement.id].remove([selectedElement.parentNode.parentNode],{removeElements: true});
+            }
+        }
 
         function createQuestionMarkup() {
             //wrapping div
             var questionDiv = document.createElement("div");
             questionDiv.classList.add("question-container");
+            questionDiv.id = 'question-container-' + idSequence;
+
+            questionDiv.appendChild(makeQHeading());
             //nested grid
             var gridDiv = document.createElement("div");
-            gridDiv.classList.add('question-grid');
+            gridDiv.classList.add('filldiv');
             gridDiv.id = 'question-grid-' + idSequence;
             questionDiv.appendChild(gridDiv);
             return new MuuriPair(questionDiv, gridDiv);
         }
 
-        function createInnerQuestionMarkup() {
-            var text = document.createTextNode("Nová otázka")
-            var div = document.createElement("div");
-            div.classList.add("question-container");
-            div.appendChild(text);
-
-            return div;
-        }
 
         function addElementTo(element, grid) {
             //item
@@ -155,17 +196,95 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
+        function makeSubQuestionTextArea(){
+            var divAnswerRow = document.createElement('div');
+            divAnswerRow.classList.add('subQuestion-container');
+            divAnswerRow.classList.add('answer-row');
+            divAnswerRow.classList.add('textAreaDiv');
+            divAnswerRow.id = 'subQuestion-container-' + idSequence;
+            idSequence++;
 
+            var divAnswerNum = document.createElement('div');
+            divAnswerNum.classList.add('answer-number');
+            divAnswerNum.innerHTML = '1.';
+
+            var divAnswer = document.createElement('div');
+            divAnswer.classList.add('answer');
+            divAnswer.classList.add('textarea');
+            divAnswer.id = 'textarea' + textareaIdSequence;
+            textareaIdSequence++;
+            divAnswer.setAttribute('contenteditable', 'true');
+            divAnswer.innerHTML = 'Tohle je odpověď!';
+
+            //var linkAnswerDel = document.createElement('a');
+            //linkAnswerDel.classList.add('answer-delete');
+            //linkAnswerDel.href = '#';
+
+
+            //var imgItem = document.createElement('img');
+            //imgItem.classList.add('tool-image');
+            //imgItem.setAttribute('src', './images/delete.png');
+
+
+            //linkAnswerDel.appendChild(imgItem);
+            divAnswerRow.appendChild(divAnswerNum);
+            divAnswerRow.appendChild(divAnswer);
+            //divAnswerRow.appendChild(linkAnswerDel);
+
+            return divAnswerRow;
+        }
+
+        function makeQHeading(){
+            var divQHeading = document.createElement('div');
+            divQHeading.classList.add('question-heading');
+
+            var divQText = document.createElement('div');
+            divQText.classList.add('question-text');
+            divQText.classList.add('textarea');
+            divQText.id = 'textarea' + textareaIdSequence;
+            textareaIdSequence++;
+            divQText.setAttribute('contenteditable', 'true');
+            divQText.innerHTML = 'Takhle bude vypadat otázka!';
+
+
+            divQHeading.appendChild(divQText);
+
+            return divQHeading;
+        }
+
+        /*
+        function makeSubQuestionTextArea(){
+            var divQHeading = document.createElement('div');
+            divQHeading.classList.add('answer-row');
+            divQHeading.classList.add('textAreaDiv');
+
+            var divQText = document.createElement('div');
+            divQText.classList.add('question-text');
+            divQText.classList.add('textarea');
+            divQText.id = 'textarea' + textareaIdSequence;
+            textareaIdSequence++;
+            divQText.setAttribute('contenteditable', 'true');
+            divQText.innerHTML = 'Takhle bude vypadat otázka!';
+
+
+            divQHeading.appendChild(divQText);
+
+            return divQHeading;
+        }
+        */
         Init();
     }).apply(muuriWrapper);
 });
 
-function selectEventHandler(e){
+function selectEventHandler(e) {
     e.stopPropagation();
-    if (muuriWrapper.selectedElement !== null){
-        muuriWrapper.selectedElement.classList.remove("selected");
+    if (selectedElement !== null) {
+        selectedElement.classList.remove("selected");
     }
-    muuriWrapper.selectedElement = e.currentTarget;
-    muuriWrapper.selectedElement.classList.add("selected");
-
+    selectedElement = e.currentTarget;
+    selectedElement.classList.add("selected");
+    if (selectedElement.classList.contains("question-container"))
+        setToolbar("question");
+    if (selectedElement.classList.contains("textAreaDiv"))
+        setToolbar("textArea");
 }

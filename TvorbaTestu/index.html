@@ -66,69 +66,77 @@
 
                     <!--Panel nastroju-->
                     <!-- question part -->
-                    <li class="nav-item tool" id="addQuestion">
-                        <a class="nav-link vertical-bar" href="javascript:muuriWrapper.newQuestion()" title="Přidat otázku">
+                    <li class="nav-item tool allControl" id="addQuestion">
+                        <a class="nav-link vertical-bar" href="#" title="Přidat otázku">
                             <img src="./images/add.png" class="tool-image"/>
                         </a>
                     </li>
-
+                    <!--
                     <li class="nav-item tool" id="addAnswerQuestion">
                         <a class="nav-link" href="javascript:console.log(muuriWrapper.selectedElement)" title="Přidat odpověď">
                             <img src="./images/answer.png" class="tool-image"/>
                         </a>
                     </li>
+                    -->
 
-                    <li class="nav-item tool" id="deleteQuestion">
+                    <li class="nav-item tool questionControl" id="deleteQuestion">
                         <a class="nav-link" href="#" title="Smazat otázku">
                             <img src="./images/delete.png" class="tool-image"/>
                         </a>
                     </li>
 
+                    <li class="nav-item tool questionControl" id="addTextArea">
+                        <a class="nav-link" href="#" title="Přidat text">
+                            <img src="./images/favicon.png" class="tool-image"/>
+                        </a>
+                    </li>
+
+                    <li class="nav-item tool questionControl" id="addImage">
+                        <a class="nav-link" href="#" title="Přidat obrázek odpovědi">
+                            <img src="./images/add-image.png" class="tool-image"/>
+                        </a>
+                    </li>
+                    <!--
                     <li class="nav-item tool" id="addImageQuestion">
                         <a class="nav-link" href="#" title="Přidat obrázek otázce">
                             <img src="./images/add-image.png" class="tool-image"/>
                         </a>
                     </li>
-
+                    -->
                     <!-- answer part -->
-                    <li class="nav-item tool hidden" id="deleteAnswer">
-                        <a class="nav-link vertical-bar" href="#" title="Smazat odpověď">
+                    <li class="nav-item tool hidden subQuestionControl" id="deleteSubQuestion">
+                        <a class="nav-link vertical-bar" href="#" title="Smazat část otázky">
                             <img src="./images/delete.png" class="tool-image"/>
                         </a>
                     </li>
 
-                    <li class="nav-item tool hidden" id="addImageAnswer">
-                        <a class="nav-link" href="#" title="Přidat obrázek odpovědi">
-                            <img src="./images/add-image.png" class="tool-image"/>
-                        </a>
-                    </li>
 
                     <!-- text part -->
-                    <li class="nav-item tool hidden" id="bold">
+                    <li class="nav-item tool hidden textAreaControl" id="bold">
                         <a class="nav-link vertical-bar" href="javascript:editText('<b>', '</b>')" title="Tučně">
                             <img src="./images/bold.png" class="tool-image"/>
                         </a>
                     </li>
 
-                    <li class="nav-item tool hidden" id="italic">
+                    <li class="nav-item tool hidden textAreaControl"  id="italic">
                         <a class="nav-link" href="javascript:editText('<i>', '</i>')" title="Kurzíva">
                             <img src="./images/italic.png" class="tool-image"/>
                         </a>
                     </li>
 
-                    <li class="nav-item tool hidden" id="underline">
+                    <li class="nav-item tool hidden textAreaControl" id="underline">
                         <a class="nav-link" href="javascript:editText('<u>', '</u>')" title="Podtržení">
                             <img src="./images/underline.png" class="tool-image"/>
                         </a>
                     </li>
 
-                    <li class="nav-item tool hidden" id="textColor">
+                    <li class="nav-item tool hidden textAreaControl" id="textColor">
                         <a class="nav-link" href="#" title="Barva textu">
                             <img src="./images/text-color.png" class="tool-image"/>
                         </a>
                     </li>
 
-                    <li class="nav-item tool hidden" id="highlight">
+                    <li class="nav-item tool hidden textAreaControl" id="highlight">
                         <a class="nav-link" href="#" title="Podbarvení">
                             <img src="./images/high-light.png" class="tool-image"/>
                         </a>
@@ -143,7 +151,7 @@
 
         <div class="col-md-2" style="background-color: rgb(245,245,245);">
             <div id="col-verze">
-                <p align="center" id="sablony-nadpis">Verze</p>
+                <p align="center" id="verze-nadpis">Verze</p>
                 <div class="filldiv" id="versionArea">
                     <div class="row">
                         <div class="miniatura">
@@ -173,63 +181,7 @@
                 <input type="button" onclick="setToolbar('textarea');" value="text!">
                 <input type="button" onclick="setToolbar('answer');" value="answer!">
                 <div class="filldiv" id="questionArea">
-                    <div class="question-container">
-                        <div class="question-heading">
-                            <div class="question-text textarea" id="ques1" contenteditable="true" onclick="setToolbar('textarea')">
-                                Takhle bude vypadat otázka!
-                            </div>
-                        </div>
-                        <div class="answers-container" onclick="setToolbar('answer');">
-                            <div class="answer-row" onclick="setToolbar('answer');">
-                                <div class="answer-number">1.</div>
-                                <div class="answer textarea" id="ans11" contenteditable="true" onclick="setToolbar('textarea')">
-                                    Tohle je odpověď!
-                                </div>
-                                <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
-                            </div>
-                            <div class="answer-row">
-                                <div class="answer-number">1.</div>
-                                <div class="answer textarea" id="ans12" contenteditable="true" onclick="setToolbar('textarea')">
-                                    Tohle je odpověď!
-                                </div>
-                                <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
-                            </div>
-                            <div class="answer-row">
-                                <div class="answer-number">1.</div>
-                                <div class="answer textarea" id="ans13" contenteditable="true" onclick="setToolbar('textarea')">
-                                    Tohle je odpověď!
-                                </div>
-                                <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
-                            </div>
-                        </div>
-                        <div class="question-pop-up">
-                            <ul class="inline-list">
-                                <li class="inline-list-item" id="addQuestionDetail">
-                                    <a class="list-link" href="javascript:addQuestion()" title="Přidat otázku">
-                                        <img src="./images/add.png" class="tool-image"/>
-                                    </a>
-                                </li>
 
-                                <li class="inline-list-item" id="addAnswerQuestionDetail">
-                                    <a class="list-link" href="javascript:addAnswer()" title="Přidat odpověď">
-                                        <img src="./images/answer.png" class="tool-image"/>
-                                    </a>
-                                </li>
-
-                                <li class="inline-list-item" id="deleteQuestionDetail">
-                                    <a class="list-link" href="#" title="Smazat otázku">
-                                        <img src="./images/delete.png" class="tool-image"/>
-                                    </a>
-                                </li>
-
-                                <li class="inline-list-item" id="addImageQuestionDetail">
-                                    <a class="list-link" href="#" title="Přidat obrázek otázce">
-                                        <img src="./images/add-image.png" class="tool-image"/>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
 
