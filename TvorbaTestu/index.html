@@ -105,19 +105,19 @@
 
                     <!-- text part -->
                     <li class="nav-item tool hidden" id="bold">
-                        <a class="nav-link vertical-bar" href="#" title="Tučně">
+                        <a class="nav-link vertical-bar" href="javascript:editText('<b>', '</b>')" title="Tučně">
                             <img src="./images/bold.png" class="tool-image"/>
                         </a>
                     </li>
 
                     <li class="nav-item tool hidden" id="italic">
-                        <a class="nav-link" href="#" title="Kurzíva">
+                        <a class="nav-link" href="javascript:editText('<i>', '</i>')" title="Kurzíva">
                             <img src="./images/italic.png" class="tool-image"/>
                         </a>
                     </li>
 
                     <li class="nav-item tool hidden" id="underline">
-                        <a class="nav-link" href="#" title="Podtržení">
+                        <a class="nav-link" href="javascript:editText('<u>', '</u>')" title="Podtržení">
                             <img src="./images/underline.png" class="tool-image"/>
                         </a>
                     </li>
@@ -175,28 +175,28 @@
                 <div class="filldiv" id="questionArea">
                     <div class="question-container">
                         <div class="question-heading">
-                            <div class="question-text textarea" contenteditable="true">
+                            <div class="question-text textarea" id="ques1" contenteditable="true" onclick="setToolbar('textarea')">
                                 Takhle bude vypadat otázka!
                             </div>
                         </div>
-                        <div class="answers-container">
-                            <div class="answer-row">
+                        <div class="answers-container" onclick="setToolbar('answer');">
+                            <div class="answer-row" onclick="setToolbar('answer');">
                                 <div class="answer-number">1.</div>
-                                <div class="answer textarea" contenteditable="true">
+                                <div class="answer textarea" id="ans11" contenteditable="true" onclick="setToolbar('textarea')">
                                     Tohle je odpověď!
                                 </div>
                                 <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
                             </div>
                             <div class="answer-row">
                                 <div class="answer-number">1.</div>
-                                <div class="answer textarea" contenteditable="true">
+                                <div class="answer textarea" id="ans12" contenteditable="true" onclick="setToolbar('textarea')">
                                     Tohle je odpověď!
                                 </div>
                                 <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
                             </div>
                             <div class="answer-row">
                                 <div class="answer-number">1.</div>
-                                <div class="answer textarea" contenteditable="true">
+                                <div class="answer textarea" id="ans13" contenteditable="true" onclick="setToolbar('textarea')">
                                     Tohle je odpověď!
                                 </div>
                                 <a class="answer-delete" href="#"><img src="./images/delete.png" class="tool-image"></a>
